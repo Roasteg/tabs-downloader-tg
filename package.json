@@ -1,0 +1,22 @@
+{
+  "name": "tabsdownloader",
+  "version": "1.0.0",
+  "description": "Telegram bot for downloading tabs from songsterr",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc --watch",
+    "start": "node dist/app.js --watch"
+  },
+  "author": "Roasteg",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@types/node": "^20.2.3",
+    "axios": "^1.4.0",
+    "telegraf": "^4.12.2"
+  }
+}
