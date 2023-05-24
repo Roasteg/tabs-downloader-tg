@@ -2,6 +2,6 @@
 
 ## Bot is live 
 
-[Telegram link]('https://t.me/TabsDownloaderBot')
+[Telegram link](https://t.me/TabsDownloaderBot)
 
 ### Made with telegraf.js
