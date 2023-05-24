@@ -1,6 +1,6 @@
 import Song from "../model/song";
 
-export default function getSongsStrings(arrayOfSongs: Song[]): string {
+export default function getSongsString(arrayOfSongs: Song[]): string {
     return arrayOfSongs
         .map(
             (song) =>
