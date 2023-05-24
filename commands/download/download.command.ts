@@ -1,17 +1,16 @@
 import { Composer } from "telegraf";
 import downloadTab from "./downloadTab";
-import { unlinkSync } from "fs";
-
+import editMessage from "../../helper/editMessage";
 module.exports = Composer.hears(/\/download[0-9]|download/, async (context) => {
     const downloadQuery = context.message.text.split("/download").join("");
     if (downloadQuery === "")
         return await context.reply(
             "You need to specify id of tab to download it!"
         );
+    const { message_id } = await context.reply("Attempting download...");
     try {
-        await downloadTab(downloadQuery);
-        await context.replyWithDocument({ source: downloadQuery + ".gp5" });
-        await unlinkSync(downloadQuery + ".gp5"); 
+        await downloadTab(context, downloadQuery);
+        await editMessage(context, message_id, "Success!");
     } catch (error) {
         context.reply(String(error));
     }
