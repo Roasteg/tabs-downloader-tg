@@ -1,7 +1,7 @@
 import { Composer } from "telegraf";
 import editMessage from "../../helper/editMessage";
 import getSongsString from "../../helper/getSongsString";
-import searchSong from "./searchSongs";
+import searchSongs from "./searchSongs";
 import bot from "../../config/bot";
 import SearchService from "../../service/SearchService";
 
@@ -30,7 +30,7 @@ module.exports = Composer.command("search", async (context) => {
     searchService.page = 0;
 
     try {
-        const songs = await searchSong(
+        const songs = await searchSongs(
             searchService.searchString,
             searchService.page * 5
         );
@@ -53,7 +53,7 @@ module.exports = Composer.command("search", async (context) => {
 bot.action("next", async (context) => {
     searchService.page += 1;
     try {
-        const songs = await searchSong(
+        const songs = await searchSongs(
             searchService.searchString,
             searchService.page * 5
         );
@@ -71,11 +71,11 @@ bot.action("next", async (context) => {
     }
 });
 
-bot.action("previous", async(context) => {
-    if(searchService.page === 0) return context.answerCbQuery();
+bot.action("previous", async (context) => {
+    if (searchService.page === 0) return context.answerCbQuery();
     searchService.page -= 1;
     try {
-        const songs = await searchSong(
+        const songs = await searchSongs(
             searchService.searchString,
             searchService.page * 5
         );

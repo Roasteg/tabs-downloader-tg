@@ -1,9 +1,6 @@
-import { Composer, Context, Telegraf } from "telegraf";
+import { Context, Telegraf } from "telegraf";
 import { Update } from "telegraf/typings/core/types/typegram";
-import commands from "../commands/commands_list";
-import searchSong from "../commands/search/searchSongs";
-import axios from "axios";
-import getSongsString from "../helper/getSongsString";
+import commandsList from "../commands/commands_list";
 
 require('dotenv').config();
 
@@ -13,10 +10,8 @@ bot.start((context) => {
     context.reply(`Hello ${context.message.from.first_name}! This bot can search and download guitar tabs from songsterr! Use /help to get info on how to use this bot!`);
 })
 
-
-
 bot.help((context) => {
-    commands.map((command) => context.reply(`/${command.name} - ${command.description}`))
+    context.reply(commandsList.map((command) => `/${command.name}\n${command.description}\n\n`).join(""));
 })
 
 export default bot;

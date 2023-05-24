@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function searchSong(query: string, from: number) {
+export default async function searchSongs(query: string, from: number) {
     const response = await axios.get(`https://www.songsterr.com/api/songs`, {
         data: {
             "site-info": {
