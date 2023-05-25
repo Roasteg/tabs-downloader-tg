@@ -1,5 +1,5 @@
 import axios from "axios";
-import { unlinkSync, writeFile } from "fs";
+import { unlinkSync, writeFileSync } from "fs";
 import { Context, NarrowedContext } from "telegraf";
 import { Message, Update } from "telegraf/typings/core/types/typegram";
 
@@ -24,11 +24,12 @@ export default async function downloadTab(
             "Content-Type": "application/guitar-pro5",
         },
     });
+    
     const buffer = Buffer.from(response.data);
 
-    await writeFile(revisions.data[0].title + ".gp5", buffer, () => {});
+    writeFileSync(revisions.data[0].title + ".gp5", buffer);
     await context.replyWithDocument({
         source: revisions.data[0].title + ".gp5",
     });
-    await unlinkSync(revisions.data[0].title + ".gp5");
+    unlinkSync(revisions.data[0].title + ".gp5");
 }

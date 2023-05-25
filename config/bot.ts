@@ -1,6 +1,6 @@
 import { Context, Telegraf } from "telegraf";
 import { Update } from "telegraf/typings/core/types/typegram";
-import commandsList from "../commands/commands_list";
+import commandsList from "../commands/commandsList";
 
 require('dotenv').config();
 

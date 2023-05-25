@@ -6,7 +6,7 @@ const commandsList = [
     },
     {
         name: "download",
-        description: "Download tab by tab id.",
+        description: "Download tab by song id.",
     },
     {
         name: "source",
